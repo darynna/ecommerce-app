@@ -23,7 +23,7 @@ async function BlackFridayBanner() {
                             <span className="text-red-600">{sale.couponCode}</span>
                         </span>
                         <span className="ml-2 font-bold text-base sm:text-xl">
-                            for {sale.discountamount}%
+                            for {sale.discountAmount}%
                         </span>
                     </div>
                 </div>
