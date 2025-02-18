@@ -20,7 +20,7 @@ export default function Header() {
 
     console.log(user)
   return (
-      <header className='flex flex-wrap justify-between items-center px-4 py-2'>
+      <header className='flex flex-wrap justify-between items-center'>
           {/* Top row */}
           <div className='flex w-full flex-wrap justify-between items-center'>
               <Link href="/" className='text-2xl font-bold text-blue-500 cursor-pointer mx-auto sm:mx-0'>Shopr</Link>
