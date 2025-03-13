@@ -20,6 +20,6 @@ export const getProductBySlug = async (slug: string) => {
             
         } catch (error) {
             console.log("Error fetching product by ID:", error)
-            return []
+            return null
         }
     }

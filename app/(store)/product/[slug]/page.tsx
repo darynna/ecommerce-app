@@ -1,5 +1,6 @@
 import imageUrl from '@/lib/imageUrl';
 import { getProductBySlug } from '@/sanity/lib/products/getProductBySlug';
+import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react'
@@ -32,6 +33,19 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                             <span className='text-white font-bold text-lg'>Out of Stock</span>
                         </div>
                     )}
+                </div>
+                <div className='flex flex-col justify-between'>
+                    <div>
+                        <h1 className='text-3xl font-bold mb-4'>{product.name}</h1>
+                        <div className='text-xl font-semibold mb-4'>
+                            £{product.price?.toFixed(2)}
+                        </div>
+                        <div className='prose max-w-none mb-6'>
+                            {Array.isArray(product.description) && (
+                                <PortableText value={product.description}/>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
     </div>
