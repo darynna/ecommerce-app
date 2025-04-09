@@ -3,10 +3,11 @@
 import useBasketStore from "@/store/store";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddBasketProductButton from "@/components/AddBasketProductButton";
 import imageUrl from "@/lib/imageUrl";
 import Image from "next/image";
+import Loader from "@/components/Loader";
 
 function BasketPage() {
     const groupedItems = useBasketStore((state) => state.getGroupedItems());
@@ -16,6 +17,15 @@ function BasketPage() {
 
     const [isClient, setIsClient] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    //Wait for client to mount
+    useEffect(() => {
+         setIsClient(true)
+     }, [])
+
+    if (!isClient) {
+        return <Loader/>
+    }
 
     if (groupedItems.length === 0) {
         return (
