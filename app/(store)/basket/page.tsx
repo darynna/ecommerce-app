@@ -8,6 +8,7 @@ import AddBasketProductButton from "@/components/AddBasketProductButton";
 import imageUrl from "@/lib/imageUrl";
 import Image from "next/image";
 import Loader from "@/components/Loader";
+import { createCheckoutSession, Metadata } from "@/actions/createCheckoutSession";
 
 function BasketPage() {
     const groupedItems = useBasketStore((state) => state.getGroupedItems());
@@ -38,7 +39,29 @@ function BasketPage() {
         )
     }
 
-    const handleCheckOut = async () => { };
+    const handleCheckOut = async () => { 
+        if (!isSignedIn) return;
+        setIsLoading(true);
+
+        try {
+            const metadata: Metadata = {
+                orderNumber: crypto.randomUUID(),
+                customerNumber: user?.fullName ?? "Uknown",
+                customerEmail: user?.emailAddresses[0].emailAddress ?? "Uknown",
+                clerkUserId: user!.id,
+            }
+
+            const checkOutUrl = await createCheckoutSession(groupedItems, metadata);
+
+            if (checkOutUrl) {
+                window.location.href = checkOutUrl;
+            }
+        } catch (error) {
+            console.log("Error checkout ", error)
+        } finally {
+            setIsLoading(false)
+        }
+    };
 
     return <div className="container mx-auto p-4 max-w-6xl">
         <h1 className="text-2xl font-bold mb-4">Your Basket</h1>
@@ -88,7 +111,7 @@ function BasketPage() {
                     </span>
                     </p>
                     <p className="flex justify-between text-2xl font-bold border-t pt-2">
-                        <span>Ttotal:</span>
+                        <span>Total:</span>
                         <span>
                             £{useBasketStore.getState().getTotalPrice().toFixed(2)}
                         </span>
