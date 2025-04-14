@@ -63,6 +63,7 @@ export async function createCheckoutSession(
                 quantity: item.quantity
             }))
         })
+        return session.url
     } catch (error) {
         console.log("Error creating cheackout session ", error)
     }
