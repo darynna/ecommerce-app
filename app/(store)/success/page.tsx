@@ -60,7 +60,7 @@ function SuccessPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <p className="text-gray-600 text-center">
+                    <p className="text-gray-600">
                         A confirmation email has been send to your registered address.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
