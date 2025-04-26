@@ -26,7 +26,7 @@ export default function Header() {
       <header className='flex flex-wrap justify-between items-center'>
           {/* Top row */}
           <div className='flex w-full flex-wrap justify-between items-center'>
-              <Link href="/" className='text-2xl font-bold text-blue-500 cursor-pointer mx-auto sm:mx-0'>Shopr</Link>
+              <Link href="/" className='text-2xl font-bold text-blue-500 cursor-pointer mx-auto sm:mx-0'>Shoppio</Link>
 
               <Form action="/search" className='w-full sm:w-auto sm:mx-4 mt-2 sm:mt-0'>
                   <input type="text" name="query" placeholder='Search for products'
