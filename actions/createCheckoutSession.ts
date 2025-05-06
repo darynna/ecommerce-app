@@ -6,7 +6,7 @@ import { BasketItem } from "@/store/store";
 
 export type Metadata = {
     orderNumber: string;
-    customerNumber: string;
+    customerName: string;
     customerEmail: string;
     clerkUserId: string;
 }
@@ -47,7 +47,12 @@ export async function createCheckoutSession(
             customer: customerId,
             customer_creation: customerId ? undefined : "always",
             customer_email: !customerId ? metadata.customerEmail : undefined,
-            metadata,
+            metadata: {
+                orderNumber: metadata.orderNumber, // Add the order number to metadata
+                customerName: metadata.customerName, 
+                customerEmail: metadata.customerEmail,
+                clerkUserId: metadata.clerkUserId,
+            },
             mode: "payment",
             allow_promotion_codes: true,
             success_url: successUrl,

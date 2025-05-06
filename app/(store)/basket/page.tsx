@@ -46,7 +46,7 @@ function BasketPage() {
         try {
             const metadata: Metadata = {
                 orderNumber: crypto.randomUUID(),
-                customerNumber: user?.fullName ?? "Uknown",
+                customerName: user?.fullName ?? "Uknown",
                 customerEmail: user?.emailAddresses[0].emailAddress ?? "Uknown",
                 clerkUserId: user!.id,
             }
