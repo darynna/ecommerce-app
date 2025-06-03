@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import crypto from "crypto";
+export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
     const body = await req.text();

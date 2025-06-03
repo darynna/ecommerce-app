@@ -8,7 +8,6 @@ import useBasketStore from "@/store/store"
 function SuccessPage() {
     const searchParams = useSearchParams();
     const orderNumber = searchParams.get("orderNumber");
-    console.log(orderNumber);
     const clearBasket = useBasketStore((state) => state.clearBasket);
 
     useEffect(() => {

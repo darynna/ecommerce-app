@@ -7,7 +7,8 @@ async function CategoriesPage(
 ) {
     const { slug } = await params;
 
-    const products = await getProctsByCatetegory(slug);
+    const productsData = await getProctsByCatetegory(slug);
+  const products = productsData ?? []; 
     const categories = await getAllCategories();
 
     return <div className="flex flex-col items-center justify-top min-h-screen bg-gray-100 p-4">
