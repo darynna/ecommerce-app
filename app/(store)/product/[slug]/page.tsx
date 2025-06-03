@@ -6,6 +6,10 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react'
 
+
+export const dynamic = "force-static"
+export const revalidate = 3600; 
+
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const product = await getProductBySlug(slug);
